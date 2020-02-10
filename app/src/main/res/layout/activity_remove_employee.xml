@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RemoveEmployeeActivity">
+
+    <TextView
+        android:id="@+id/tvRemoveEmployee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/etRemoveEmployee"
+        android:text="Enter Tax ID Of Employee To Be Removed"
+        android:textSize="20sp"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/etRemoveEmployee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvRemoveEmployee"
+        app:layout_constraintBottom_toTopOf="@+id/btnDeleteEmployee"/>
+
+    <Button
+        android:id="@+id/btnDeleteEmployee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete Employee From Database"
+        app:layout_constraintTop_toBottomOf="@+id/etRemoveEmployee"
+        android:onClick="deleteEmployee"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

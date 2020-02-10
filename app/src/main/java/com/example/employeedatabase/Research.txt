@@ -1,0 +1,21 @@
+1. Locks is when each resource that a thread uses has a lock so that only one thread has access to that
+    resource at a time. Mutex is when you put up a restriction around a critical section of a resource to
+    prevent data races. Semaphores are just variables to control access to a commonly used resource. It
+    keeps track of how many units or a resource are available to use. Synchronized uses synchronized
+    blocks that are marked with a keyword. When a block is on an object no other threads are allowed
+    to use that object until the thread using the object leaves. Volatile is put onto a variable which
+    tells all threads to do read and write operations on main memory only. Atomic can be put on variables
+    so some operations cannot be preformed on them by threads.
+
+2. Deadlock is when a set of processes are blocked because each of them are holding a resource and waiting
+    for the other process to let go of their resources to use.
+
+3. A race condition is when a device or system tries to do the same operation at the same time or when
+    two threads try to access a shared variable at the same time.
+
+4. It is when a program does not release memory of an object that is no longer in use or if that object
+    is stored in memory but can't be accessed.
+
+5. An ANR is activity non responsive. It is thrown when an activity gor unresponsive for 5 seconds
+    or a broadcast receiver does not finish reception of a broadcast in ten seconds. Common causes are
+    memory leaks or the main thread gets too full so it cant send signals.

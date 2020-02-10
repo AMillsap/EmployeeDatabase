@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddEmployeeActivity">
+
+    <EditText
+        android:id="@+id/etFirstNameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/etLastNameInput"
+        android:hint="Enter First Name"/>
+
+    <EditText
+        android:id="@+id/etLastNameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/etFirstNameInput"
+        app:layout_constraintBottom_toTopOf="@+id/etAddressInput"
+
+        android:hint="Enter Last Name"/>
+    <EditText
+        android:id="@+id/etAddressInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/etLastNameInput"
+        app:layout_constraintBottom_toTopOf="@+id/etCityInput"
+        android:hint="Enter Address"/>
+    <EditText
+        android:id="@+id/etCityInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/etAddressInput"
+        app:layout_constraintBottom_toTopOf="@+id/etStateNameInput"
+        android:hint="Enter City"/>
+    <EditText
+        android:id="@+id/etStateNameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/etCityInput"
+        app:layout_constraintBottom_toTopOf="@+id/etZipCodeNameInput"
+        android:hint="Enter State"/>
+    <EditText
+        android:id="@+id/etZipCodeNameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/etStateNameInput"
+        app:layout_constraintBottom_toTopOf="@+id/etTaxIDInput"
+        android:hint="Enter Zip Code"/>
+    <EditText
+        android:id="@+id/etTaxIDInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/etZipCodeNameInput"
+        app:layout_constraintBottom_toTopOf="@+id/etPositionInput"
+        android:hint="Enter TaxID"/>
+    <EditText
+        android:id="@+id/etPositionInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/etTaxIDInput"
+        app:layout_constraintBottom_toTopOf="@+id/etDepartmentInput"
+        android:hint="Enter Position"/>
+    <EditText
+        android:id="@+id/etDepartmentInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/etPositionInput"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddEmployee"
+        android:hint="Enter Department"/>
+    <Button
+        android:id="@+id/btnAddEmployee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Employee To Database"
+        app:layout_constraintTop_toBottomOf="@+id/etDepartmentInput"
+        app:layout_constraintBottom_toTopOf="@+id/btnUpdateEmployee"
+        android:onClick="addEmployeeToDatabase"/>
+    <Button
+        android:id="@+id/btnUpdateEmployee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Employee To Database"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddEmployee"
+        android:onClick="updateEmployeeToDatabase"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

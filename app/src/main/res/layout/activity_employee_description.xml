@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EmployeeDescriptionActivity">
+
+    <TextView
+        android:id="@+id/tvEmployeeFirstName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Employee First Name"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tvEmployeeLastName"/>
+
+    <TextView
+        android:id="@+id/tvEmployeeLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Employee Second Name"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmployeeFirstName"
+        app:layout_constraintBottom_toTopOf="@+id/tvEmployeeAddress"/>
+
+    <TextView
+        android:id="@+id/tvEmployeeAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmployeeLastName"
+        app:layout_constraintBottom_toTopOf="@+id/tvEmployeeCity"
+        android:hint="Employee Address"/>
+
+    <TextView
+        android:id="@+id/tvEmployeeCity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Employee City"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmployeeAddress"
+        app:layout_constraintBottom_toTopOf="@+id/tvEmployeeState"/>
+
+    <TextView
+        android:id="@+id/tvEmployeeState"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Employee State"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmployeeCity"
+        app:layout_constraintBottom_toTopOf="@+id/tvEmployeeZip"/>
+
+    <TextView
+        android:id="@+id/tvEmployeeZip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Employee Zip"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmployeeState"
+        app:layout_constraintBottom_toTopOf="@+id/tvEmployeeTaxID"/>
+
+    <TextView
+        android:id="@+id/tvEmployeeTaxID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Employee TaxID"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmployeeZip"
+        app:layout_constraintBottom_toTopOf="@+id/tvEmployeePosition"/>
+
+    <TextView
+        android:id="@+id/tvEmployeePosition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Employee Position"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmployeeTaxID"
+        app:layout_constraintBottom_toTopOf="@+id/tvEmployeeDepartment"/>
+
+    <TextView
+        android:id="@+id/tvEmployeeDepartment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Employee Department"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmployeePosition"
+        app:layout_constraintBottom_toTopOf="@+id/btnDeleteEmployeeToDatabase"/>
+    <Button
+        android:id="@+id/btnDeleteEmployeeToDatabase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete This Employee"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmployeeDepartment"
+        app:layout_constraintBottom_toTopOf="@+id/btnUpdateEmployeeToDatabase"
+        android:onClick="onCLick"/>
+    <Button
+        android:id="@+id/btnUpdateEmployeeToDatabase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update This Employee"
+        app:layout_constraintTop_toBottomOf="@+id/btnDeleteEmployeeToDatabase"
+        android:onClick="onCLick"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
