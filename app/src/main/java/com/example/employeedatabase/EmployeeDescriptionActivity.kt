@@ -33,12 +33,15 @@ class EmployeeDescriptionActivity : AppCompatActivity()
         {
             R.id.btnDeleteEmployeeToDatabase ->
             {
-                database.removeEmployeeFromDatabase(passedEmployee?.taxID.toString())
+                contentResolver.delete(CONTENT_URI, passedEmployee?.taxID.toString(), null)
+                /*database.removeEmployeeFromDatabase(passedEmployee?.taxID.toString())*/
+
                 val toast =
                     Toast.makeText(applicationContext, "Employee Deleted To Database", Toast.LENGTH_LONG)
                 toast.show()
                 val intent = Intent(this, FilterEmployeeActivity::class.java)
                 startActivity(intent)
+                finish()
             }
             R.id.btnUpdateEmployeeToDatabase ->
             {

@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_employee_list.*
 
-class EmployeeListActivity : AppCompatActivity()
+class EmployeeListActivity : AppCompatActivity(), EmployeeAdapterCallback
 {
     //private lateinit var appBarConfiguration: AppBarConfiguration
     var departmentName : String = ""
@@ -52,11 +52,30 @@ class EmployeeListActivity : AppCompatActivity()
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)*/
         departmentName = intent.getStringExtra(KEY_EMPLOYEE)
-        val database = EmployeeDatabaseHelper(this)
-        list = database.getEmployeeFromDatabase(departmentName)
-        adapter = EmployeeAdapter(list)
+        var list = Array<String>(1) {departmentName}
+
+        val cursor = contentResolver.query(CONTENT_URI, null, null, list, null)
+        val employeeList = ArrayList<Employee>()
+        if(cursor!!.moveToFirst()) {
+            do {
+                val firstName = cursor.getString(cursor.getColumnIndex(COL_FIRST_NAME))
+                val lastName = cursor.getString(cursor.getColumnIndex(COL_LAST_NAME))
+                val address = cursor.getString(cursor.getColumnIndex(COL_ADDRESS))
+                val city = cursor.getString(cursor.getColumnIndex(COL_CITY))
+                val state = cursor.getString(cursor.getColumnIndex(COL_STATE))
+                val zip = cursor.getString(cursor.getColumnIndex(COL_ZIP_CODE))
+                val taxId = cursor.getString(cursor.getColumnIndex(COL_TAX_ID))
+                val position = cursor.getString(cursor.getColumnIndex(COL_POSITION))
+                val department = cursor.getString(cursor.getColumnIndex(COL_DEPARTMENT))
+                val employee = Employee(firstName, lastName, address, city, state, zip, taxId, position, department)
+                employeeList.add(employee)
+            } while(cursor.moveToNext())
+        }
+
+        cursor.close()
+        adapter = EmployeeAdapter(employeeList)
         initRecyclerView()
-        adapter.updateList(list)
+        adapter.updateList(employeeList)
     }
 
     /*override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -77,5 +96,31 @@ class EmployeeListActivity : AppCompatActivity()
         rvEmployeeList.layoutManager = layoutManager
         rvEmployeeList.addItemDecoration((itemDecoration))
         rvEmployeeList.adapter = adapter
+    }
+
+    override fun passAdapter(adapter: EmployeeAdapter)
+    {
+        departmentName = intent.getStringExtra(KEY_EMPLOYEE)
+        var list = Array(1) {departmentName}
+        val cursor = contentResolver.query(CONTENT_URI, null, null, list, null)
+        val employeeList = ArrayList<Employee>()
+        if(cursor!!.moveToFirst()) {
+            do {
+                val firstName = cursor.getString(cursor.getColumnIndex(COL_FIRST_NAME))
+                val lastName = cursor.getString(cursor.getColumnIndex(COL_LAST_NAME))
+                val address = cursor.getString(cursor.getColumnIndex(COL_ADDRESS))
+                val city = cursor.getString(cursor.getColumnIndex(COL_CITY))
+                val state = cursor.getString(cursor.getColumnIndex(COL_STATE))
+                val zip = cursor.getString(cursor.getColumnIndex(COL_ZIP_CODE))
+                val taxId = cursor.getString(cursor.getColumnIndex(COL_TAX_ID))
+                val position = cursor.getString(cursor.getColumnIndex(COL_POSITION))
+                val department = cursor.getString(cursor.getColumnIndex(COL_DEPARTMENT))
+                val employee = Employee(firstName, lastName, address, city, state, zip, taxId, position, department)
+                employeeList.add(employee)
+            } while(cursor.moveToNext())
+        }
+
+        cursor.close()
+        adapter.updateList((employeeList))
     }
 }

@@ -13,12 +13,11 @@ import java.util.ArrayList
 
 class FilterEmployeeActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
 {
-
+    var selection = ""
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_filter_employee)
-
         val database = EmployeeDatabaseHelper(this)
         val spinner: Spinner = findViewById(R.id.spSelection)
         spinner.onItemSelectedListener = this
@@ -30,7 +29,9 @@ class FilterEmployeeActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
 
     }
 
-    override fun onItemSelected(parent: AdapterView<*>, view: View, pos: Int, id: Long) {
+    override fun onItemSelected(parent: AdapterView<*>, view: View, pos: Int, id: Long)
+    {
+        selection = spSelection.selectedItem.toString()
     }
 
     override fun onNothingSelected(parent: AdapterView<*>) {
@@ -39,8 +40,9 @@ class FilterEmployeeActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
     fun searchDept(view: View)
     {
         val intent = Intent(this, EmployeeListActivity::class.java)
-        intent.putExtra(KEY_EMPLOYEE,spSelection.selectedItem.toString())
+        intent.putExtra(KEY_EMPLOYEE,selection)
         startActivity(intent)
+        finish()
     }
 
 }
